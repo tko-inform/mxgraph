@@ -2645,7 +2645,7 @@ mxEditor.prototype.showTasks = function ()
 		var div = document.createElement('div');
 		div.style.padding = '4px';
 		div.style.paddingLeft = '20px';
-		var w = document.body.clientWidth;
+		var w = document.body.clientWidth; // TODO: брать ширину контейнера?
 		var wnd = new mxWindow(
 			mxResources.get(this.tasksResource) ||
 			this.tasksResource,
@@ -2791,11 +2791,13 @@ mxEditor.prototype.showOutline = function ()
 		{
 			div.style.filter = 'progid:DXImageTransform.Microsoft.alpha(opacity=100)';
 		}
-		
+
+		var w = document.body.clientWidth; // TODO: брать ширину контейнера?
+		var h = document.body.clientHeight;
 		var wnd = new mxWindow(
 			mxResources.get(this.outlineResource) ||
 			this.outlineResource,
-			div, 600, 480, 200, 200, false);
+			div, w - 220, h - 250, 200, 200, false);
 				
 		// Creates the outline in the specified div
 		// and links it to the existing graph
